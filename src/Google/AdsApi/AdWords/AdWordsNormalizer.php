@@ -24,7 +24,6 @@ use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
 use UnexpectedValueException;
 use phpDocumentor\Reflection\DocBlock;
-use phpDocumentor\Reflection\DocBlockFactory;
 
 /**
  * Provides recursive normalization and denormalization for AdWords objects for
@@ -72,8 +71,6 @@ use phpDocumentor\Reflection\DocBlockFactory;
  */
 final class AdWordsNormalizer extends GetSetMethodNormalizer {
 
-  private $docBlockFactory;
-
   /**
    * @see GetSetMethodNormalizer::__construct()
    */
@@ -82,7 +79,6 @@ final class AdWordsNormalizer extends GetSetMethodNormalizer {
       NameConverterInterface $nameConverter = null
   ) {
     parent::__construct($classMetadataFactory, $nameConverter);
-    $this->docBlockFactory = DocBlockFactory::createInstance();
   }
 
   /**
@@ -109,8 +105,7 @@ final class AdWordsNormalizer extends GetSetMethodNormalizer {
           $attributeValue = call_user_func(
               $this->callbacks['normalize'],
               $attributeValue,
-              $this->getReturnType(
-                  $this->docBlockFactory->create($reflMethod->getDocComment()))
+              $this->getReturnType(new DocBlock($reflMethod->getDocComment()))
           );
         }
 
@@ -168,8 +163,7 @@ final class AdWordsNormalizer extends GetSetMethodNormalizer {
       // Get the type of this attribute using PHP document block of its getter.
       $getter = $reflClass->getMethod('get' . ucfirst($attribute));
       $typeHint =
-          $this->getReturnType(
-              $this->docBlockFactory->create($getter->getDocComment()));
+          $this->getReturnType(new DocBlock($getter->getDocComment()));
 
       if (array_key_exists('denormalize', $this->callbacks)) {
         $value = call_user_func($this->callbacks['denormalize'], $value,

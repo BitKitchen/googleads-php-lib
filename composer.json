@@ -3,13 +3,14 @@
   "description": "Google Ads APIs Client Library for PHP (AdWords and DFP)",
   "require": {
     "php": ">=5.5.9",
-    "google/auth": "~0.7",
+    "google/auth": "~0.7.0",
     "guzzlehttp/guzzle": "~6.0",
     "guzzlehttp/psr7": "~1.2",
     "monolog/monolog": "~1.17.1",
-    "symfony/serializer": ">= 2.7",
+    "symfony/serializer": ">= 2.8",
     "ext-openssl": "*",
     "ext-soap": "*",
+    "symfony/property-access": ">= 2.7",
     "phpdocumentor/reflection-docblock": ">= 2"
   },
   "suggest": {
