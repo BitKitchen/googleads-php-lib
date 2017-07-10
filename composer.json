@@ -10,7 +10,8 @@
     "guzzlehttp/psr7": "^1.2",
     "monolog/monolog": "^1.17.1",
     "phpdocumentor/reflection-docblock": ">= 2",
-    "symfony/serializer": ">= 2"
+    "symfony/serializer": ">= 2.8",
+    "symfony/property-access": ">= 2.7"
   },
   "require-dev": {
     "phpunit/phpunit": "^4.8"
