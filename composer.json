@@ -10,7 +10,7 @@
     "symfony/serializer": ">= 2.7",
     "ext-openssl": "*",
     "ext-soap": "*",
-    "phpdocumentor/reflection-docblock": "^3.1"
+    "phpdocumentor/reflection-docblock": ">= 2"
   },
   "suggest": {
     "php-64bit": ">=5.5.9"
